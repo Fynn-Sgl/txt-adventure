@@ -128,20 +128,24 @@ while True:
 
         continue
 
-    naechster_raum = aktueller_raum.verbindungen[befehl]
-    if naechster_raum.verschlossen:
-        print("Der Weg ist verschlossen")
-        continue
+    
+    
 
 
     if befehl in aktueller_raum.verbindungen:
-        aktueller_raum = aktueller_raum.verbindungen[befehl]
+        naechster_raum = aktueller_raum.verbindungen[befehl]
+        if naechster_raum.verschlossen:
+            print("Der Weg ist verschlossen")
+            continue
+        aktueller_raum = naechster_raum
     else:
         print("Dort kannst du nicht hin gehen.")
     
 
 #zum starten des Spieles in die Komandozeile eingeben: python main.py
 
-#inventarmechanik hinzufügen
-#zähler der aktionen trackt, am ende sagt wie lange du gebraucht hast und dir nach einer bestimmten zeit neue storry sachen einfallen.
+#To Do:
 #System bauen, dass erkennt wo du schon warst und dann im umschautext sagt wo welcher Weg hinführt
+#Raumbeschreibungen verbessern
+#Schlüssel erst bei betreten der verschlossenen räume prüfen -> erst dann Raum geöfnet
+#umschauen und aufheben,/ nehmen eines Items seperieren -> count anpassen weil mehr aktionen benötigt
