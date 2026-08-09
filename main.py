@@ -63,7 +63,7 @@ print("Du wachst in einem dunklen Raum auf. Es ist kalt und feucht, und du kanns
 "Es riecht nach Moder und Verfall, und du spürst eine unheimliche Präsenz in der Luft. Du weißt nicht, wie du hierher gekommen bist oder was dich erwartet, aber du weißt, dass du einen Weg finden musst, um zu entkommen.")
 
 while True:
-
+    print("=" * 40)
     counter+=1
 
     if aktueller_raum == außen:
