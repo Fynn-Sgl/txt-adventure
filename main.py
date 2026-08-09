@@ -18,7 +18,7 @@ badezimmer = Raum("Badezimmer", "Das Badezimmer ist feucht und schimmelig, mit e
 eingang = Raum("Eingang", "Der Eingangsbereich ist kalt und zugig, die halb geöffnete Haustür schlägt leise im Wind.", "In einer Ecke steht ein umgestürzter Schirmständer, die Garderobe ist leer. Vor der Tür liegt nasser Matsch, und der Weg führt weiter in Richtung Norden in den Flur.")
 dachboden = Raum("Dachboden", "Der Dachboden ist voll mit alten Kisten und verstaubten Möbeln. Das einzige Licht fällt durch ein kleines Dachfenster.", "Überall liegen Spinnweben, und die Luft ist trocken und abgestanden. Du hörst das leise Knarren der Holzbalken, wenn du dich bewegst. Eine Leiter führt zurück in den Flur.")
 keller = Raum("Keller", "Der Keller ist dunkel und feucht, die Wände sind mit Schimmel bedeckt.", "Der Keller ist dunkel und Lang. Außer einer Tür nach Norden und eine nach einer alten Holztreppe befindlichen Tür im Süden gibt es noch eine Tür im Westen, die aber verschlossen ist.")
-
+außen = Raum("Die Außenwelt","","")
  
 
 #region Verbindungen
@@ -37,6 +37,8 @@ badezimmer.verbindungen["süden"] = flur_osten
 flur_osten.verbindungen["süden"] = eingang
 eingang.verbindungen["norden"] = flur_osten
 
+eingang.verbindungen["süden"] = außen
+
 flur_osten.verbindungen["osten"] = dachboden
 dachboden.verbindungen["westen"] = flur_osten
 
@@ -45,9 +47,11 @@ keller.verbindungen["osten"] = flur_westen
 
 
 keller.verschlossen = True
+außen.verschlossen = True
 badezimmer.items.append("alter Schlüssel")
 badezimmer.entdeckungstext = "Im Wasser der Badewanne liegt ein kleiner alter Schlüssel. Er ist schwer zu erkennen, weil das Wasser trüb ist"
-
+keller.items.append("großer Schlüssel")
+keller.entdeckungstext = "Du durchsuchst alle Ksiten, schaust unter alle Möbel, sogar an die Decke aber findest nichts. Alls du aufgeben wolltest siehst du eine lsoe Diele im Boden. Du hebst sie an und entdeckst einen großen, schweren Metallschlüssel. Er sieht so asu als währe die dazu passende Tür sehr groß und bedeutend"
 
 # Initialzustand
 aktueller_raum = kueche 
@@ -61,6 +65,11 @@ print("Du wachst in einem dunklen Raum auf. Es ist kalt und feucht, und du kanns
 "Es riecht nach Moder und Verfall, und du spürst eine unheimliche Präsenz in der Luft. Du weißt nicht, wie du hierher gekommen bist oder was dich erwartet, aber du weißt, dass du einen Weg finden musst, um zu entkommen.")
 
 while True:
+    if aktueller_raum == außen:
+        print("Du öffnest die Tür und das Tageslicht blendet dich. Du hast es geschafft. Du bist endlich entkommen. Deine Augen haben sich noch nicht an das helle Licht gewöhnt, aber du rennst einfach los. Irgendetwas in dir sagt dir, dass du diesen Ort schnellstmöglich verlassen musst!")
+        break
+
+
     # 1. OUTPUT
     print(f"\nOrt: {aktueller_raum.name}")#Gibt den aktuellen Raumnamen aus
     print(aktueller_raum.beschreibung)
@@ -93,6 +102,8 @@ while True:
 
             if "alter Schlüssel" in inventar:
                 keller.verschlossen = False
+            if "großer Schlüssel" in inventar:
+                außen.verschlossen = False
 
         continue
 
