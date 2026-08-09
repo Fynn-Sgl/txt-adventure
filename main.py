@@ -13,14 +13,13 @@ keller = Raum("Keller", "Der Keller ist dunkel und feucht, die Wände sind mit S
 kueche = Raum("Küche", "Es riecht etwas verdorben, in der Spüle liegt ein Teller mit Essensresten.", "Im Norden steht eine Tür offen, rechts ist eine Küchenzeile mit einem Herd und einem Kühlschrank, links ist eine Arbeitsfläche mit einem Messerblock. Es riecht sehr mies und es ist sehr unordentlich hier.")
 flur_westen = Raum("Flur", "Der Flur ist dunkel und feucht, die Wände sind mit Schimmel bedeckt.", "Der Flur ist dunkel und Lang. Außer einer Tür nach Norden und ein im Süden gibt es noch eine Tür im Westen, die aber verschlossen ist.")
 wohnzimmer = Raum("Wohnzimmer", "Das Wohnzimmer ist mit alten Möbeln vollgestellt, die Fenster sind mit dicken Vorhängen verdeckt.", "Es gibt eine Tür im Osten und im Süden. Durch die Fenster scheint leicht der Mond durch, aber es ist zu dunkel um etwas zu erkennen.")
-flur_osten = Raum("Flur","","")
-badezimmer = Raum("Badezimmer","","")
-eingang = Raum("Eingang","","")
-treppe_dachboden = Raum("Treppe zum Dachboden","","" ) 
-treppe_keller = Raum("Treppe zum Keller","","" )
+flur_osten = Raum("Flur", "Der östliche Flur ist eng und schlecht beleuchtet. Die Tapeten hängen lose von den Wänden, und der Boden knarrt bei jedem Schritt.", "Du siehst eine Tür nach Norden zum Badezimmer, eine Tür nach Süden zum Eingang und eine offene Verbindung nach Osten zum Dachboden. Spinnweben hängen in den Ecken und der Duft von Staub liegt in der Luft.")
+badezimmer = Raum("Badezimmer", "Das Badezimmer ist feucht und schimmelig, mit einer kaputten Lampe über dem Waschbecken.", "Der Spiegel ist zerbrochen und auf dem Boden liegen Scherben. Eine rostige Badewanne steht in der Ecke, der Abfluss ist verstopft und Wasserflecken ziehen sich die Fliesen hinauf.")
+eingang = Raum("Eingang", "Der Eingangsbereich ist kalt und zugig, die halb geöffnete Haustür schlägt leise im Wind.", "In einer Ecke steht ein umgestürzter Schirmständer, die Garderobe ist leer. Vor der Tür liegt nasser Matsch, und der Weg führt weiter in Richtung Norden in den Flur.")
+dachboden = Raum("Dachboden", "Der Dachboden ist voll mit alten Kisten und verstaubten Möbeln. Das einzige Licht fällt durch ein kleines Dachfenster.", "Überall liegen Spinnweben, und die Luft ist trocken und abgestanden. Du hörst das leise Knarren der Holzbalken, wenn du dich bewegst. Eine Leiter führt zurück in den Flur.")
 #endregion
 
-
+ 
 
 #region Verbindungen
 kueche.verbindungen["norden"] = flur_westen
@@ -37,6 +36,15 @@ badezimmer.verbindungen["süden"] = flur_osten
 
 flur_osten.verbindungen["süden"] = eingang
 eingang.verbindungen["norden"] = flur_osten
+
+flur_osten.verbindungen["osten"] = dachboden
+dachboden.verbindungen["westen"] = flur_osten
+
+flur_westen.verbindungen["westen"] = keller
+keller.verbindungen["osten"] = flur_westen
+
+
+
 
 # Initialzustand
 aktueller_raum = kueche 
@@ -76,3 +84,4 @@ while True:
 
 #inventarmechanik hinzufügen
 #zähler der aktionen trackt, am ende sagt wie lange du gebraucht hast und dir nach einer bestimmten zeit neue storry sachen einfallen.
+#System bauen, dass erkennt wo du schon warst und dann im umschautext sagt wo welcher Weg hinführt
