@@ -1,3 +1,11 @@
+import os
+import shutil
+
+# Eine Hilfsfunktion für flexible Trennlinien:
+def trennlinie(zeichen="="):
+    breite = shutil.get_terminal_size().columns
+    print(zeichen * breite)
+
 class Raum:
     def __init__(self, name, beschreibung, umschauen):
         self.name = name
@@ -63,7 +71,7 @@ print("Du wachst in einem dunklen Raum auf. Es ist kalt und feucht, und du kanns
 "Es riecht nach Moder und Verfall, und du spürst eine unheimliche Präsenz in der Luft. Du weißt nicht, wie du hierher gekommen bist oder was dich erwartet, aber du weißt, dass du einen Weg finden musst, um zu entkommen.")
 
 while True:
-    print("=" * 40)
+    trennlinie("-")
     counter+=1
 
     if aktueller_raum == außen:
@@ -93,6 +101,7 @@ while True:
     # 1. OUTPUT
     print(f"\nOrt: {aktueller_raum.name}")#Gibt den aktuellen Raumnamen aus
     print(aktueller_raum.beschreibung)
+    print()
     
     # 2. INPUT
     alias_map = {"n": "norden", "s": "süden", "o": "osten", "w": "westen", "north": "norden", "south": "süden", "east": "osten", "west": "westen"}
