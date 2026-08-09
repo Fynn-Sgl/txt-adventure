@@ -49,7 +49,6 @@ badezimmer.items.append("alter Schlüssel")
 badezimmer.entdeckungstext = "Im Wasser der Badewanne liegt ein kleiner alter Schlüssel. Er ist schwer zu erkennen, weil das Wasser trüb ist"
 
 
-
 # Initialzustand
 aktueller_raum = kueche 
 inventar = []
@@ -80,7 +79,7 @@ while True:
         continue
 
     if befehl == "inventar" or befehl == "i" or befehl == "inventory" or befehl == "inv":
-        print("Deine Items: " + inventar)
+        print("Deine Items: " , inventar)
         continue
     
     if befehl == "umschauen" or befehl == "look" or befehl == "l":
