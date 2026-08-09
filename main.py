@@ -56,19 +56,39 @@ keller.entdeckungstext = "Du durchsuchst alle Ksiten, schaust unter alle Möbel,
 # Initialzustand
 aktueller_raum = kueche 
 inventar = []
-
-
-
+counter = 0
 
 
 print("Du wachst in einem dunklen Raum auf. Es ist kalt und feucht, und du kannst kaum etwas sehen und dein Kopf dröhnt." \
 "Es riecht nach Moder und Verfall, und du spürst eine unheimliche Präsenz in der Luft. Du weißt nicht, wie du hierher gekommen bist oder was dich erwartet, aber du weißt, dass du einen Weg finden musst, um zu entkommen.")
 
 while True:
+
+    counter+=1
+
     if aktueller_raum == außen:
         print("Du öffnest die Tür und das Tageslicht blendet dich. Du hast es geschafft. Du bist endlich entkommen. Deine Augen haben sich noch nicht an das helle Licht gewöhnt, aber du rennst einfach los. Irgendetwas in dir sagt dir, dass du diesen Ort schnellstmöglich verlassen musst!")
+        print("Herzlichen Glückwunsch. Du hast " , counter , "aktionen gebraucht um zu entkommen")
         break
 
+    if counter == 11:
+        print()
+        print("Du hörst merkwürdige Geräusche durch das Gesammte Haus, ein kratzen an den Wänden. Dir läuft ein Schauer den Rücken hinab. Du hast Angst und deine Einzigen Gedanken drehen sich darum, wie du diesen Ort schnellstmöglich verlassen kannst ")
+        print()
+
+    if counter == 20:
+        print()
+        print("Du hörst einen lauten Knall. Danach schritte. Da ist etwas. Du musst hier raus, SCHNELL!!!")
+        print()
+
+    if counter == 25:
+        print()
+        print("PLÖTZLICH WIRD ALLES SCHWARZ!")
+        print("Etwas Eiskaltes greift von hinten nach deinem Hals. Du kannst nicht einmal mehr schreien.")
+        print("Deine Zeit ist abgelaufen. Du wirst dieses Haus nie wieder verlassen...")
+        print()
+        print("--- GAME OVER ---")
+        break
 
     # 1. OUTPUT
     print(f"\nOrt: {aktueller_raum.name}")#Gibt den aktuellen Raumnamen aus
@@ -85,6 +105,7 @@ while True:
 
     if befehl == "help" or befehl == "?" or befehl == "h" or befehl == "hilfe":
         print("Mögliche Befehle: Norden(n), Süden(s), Osten(o), Westen(w), beenden(q), Hilfe(h), umschauen(l), Inventer(i)")
+        counter -= 1    #hilfe ist keine Aktion die Zeit verbraucht, sondern um dem Spieler seine Optionen aufzuzeigen
         continue
 
     if befehl == "inventar" or befehl == "i" or befehl == "inventory" or befehl == "inv":
