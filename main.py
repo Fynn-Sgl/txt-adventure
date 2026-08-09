@@ -5,22 +5,27 @@ class Raum:
         self.verbindungen = {}
         self.umschauen = umschauen
 
-#region Räume
+#region Räume Haus
 zelle = Raum("Zelle", "Du befindest dich in einer kleinen, dunklen Zelle. Es gibt nur eine Tür, die nach Norden führt.", "Die Wände sind aus grobem Stein und mit Moos bedeckt. Es gibt ein kleines Fenster hoch oben, durch das du den Mond sehen kannst. Es ist kalt und feucht hier.")
 keller = Raum("Keller", "Der Keller ist dunkel und feucht, die Wände sind mit Schimmel bedeckt.", "Der Keller ist dunkel und Lang. Außer einer Tür nach Norden und eine nach einer alten Holztreppe befindlichen Tür im Süden gibt es noch eine Tür im Westen, die aber verschlossen ist.")
 
 kueche = Raum("Küche", "Es riecht etwas verdorben, in der Spüle liegt ein Teller mit Essensresten.", "Im Norden steht eine Tür offen, rechts ist eine Küchenzeile mit einem Herd und einem Kühlschrank, links ist eine Arbeitsfläche mit einem Messerblock. Es riecht sehr mies und es ist sehr unordentlich hier.")
-flur_unten = Raum("Flur", "Der Flur ist dunkel und feucht, die Wände sind mit Schimmel bedeckt.", "Der Flur ist dunkel und Lang. Außer einer Tür nach Norden und ein im Süden gibt es noch eine Tür im Westen, die aber verschlossen ist.")
+flur_unten_westen = Raum("Flur", "Der Flur ist dunkel und feucht, die Wände sind mit Schimmel bedeckt.", "Der Flur ist dunkel und Lang. Außer einer Tür nach Norden und ein im Süden gibt es noch eine Tür im Westen, die aber verschlossen ist.")
 wohnzimmer = Raum("Wohnzimmer", "Das Wohnzimmer ist mit alten Möbeln vollgestellt, die Fenster sind mit dicken Vorhängen verdeckt.", "Es gibt eine Tür im Osten und im Süden. Durch die Fenster scheint leicht der Mond durch, aber es ist zu dunkel um etwas zu erkennen.")
+flur_unten_osten = Raum("Flur", )
+badezimmer = Raum("Badezimmer", )
+eingang = Raum("Eingang", )
+treppe_dachboden = Raum("Treppe zum Dachboden", ) 
+treppe_keller = Raum("Treppe zum Keller", )
 #endregion
 
 
 
 #region Verbindungen
-kueche.verbindungen["norden"] = flur_unten
-flur_unten.verbindungen["süden"] = kueche
-flur_unten.verbindungen["norden"] = wohnzimmer
-wohnzimmer.verbindungen["süden"] = flur_unten
+kueche.verbindungen["norden"] = flur_unten_westen
+flur_unten_westen.verbindungen["süden"] = kueche
+flur_unten_westen.verbindungen["norden"] = wohnzimmer
+wohnzimmer.verbindungen["süden"] = flur_unten_westen    
 #wohnzimmer.verbindungen["osten","o"] 
 
 #endregion
